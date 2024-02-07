@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
+
+:root {
+  --black-color: #000;
+  --gray-color: #4d4d4d;
+  --white-color: #fff;
+
+}
+body {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--black-color);
+  font-family: 'Roboto', sans-serif;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Oswald', sans-serif;
+}
+.main-page .owl-item .item {
+  height: 100vh;
+  background-color: var(--gray-color);
+  color: var(--white-color);
+  background-position: center center;
+  background-size: cover;
+}
+.main-page .owl-item.center .item {
+  background-color: var(--black-color);
+  transition: all ease 0.3s;
+}
+.main-page .owl-item .item h1 {
+  font-weight: bold;
+  font-size: 60px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.main-page .owl-item .item h3 {
+  font-weight: bold;
+  font-size: 40px;
+}
+.main-page .owl-item .item p {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.main-page .item .item-content {
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 0;
+  text-align: center;
+  transition: .5s ease;
+  z-index: 1111;
+}
+.main-page .owl-item.center .item .item-content {
+  top: 48%;
+}
+.main-page .owl-item.center .item .item-overlay {
+  right: 0;
+}
+.btn {
+  font-size: 17px;
+  border-radius: 0;
+  transition: .8s ease !important;
+  text-transform: capitalize;
+  border: 2px solid #FFFFFF;
+  padding: 10px 25px;
+  color: var(--white-color);
+  font-weight: 300;
+  background-color: transparent;
+  font-family: 'Oswald', sans-serif;
+}
+.btn:hover {
+  color: var(--black-color);
+  background: var(--white-color);
+}
+.item .item-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  opacity: .7;
+  transition: .8s ease;
+  transition-delay: .5s;
+  filter: blur(5px);
+  backdrop-filter: blur(15px);
+}
+
+.navigation {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  width: 33%;
+}
+
+.navigation .item {
+  background-size: cover;
+  background-position: center center;
+  padding: 10px;
+  color: #FFF;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #4d4d4d;
+  width: 100%;
+  height: 50px;
+  border: 2px solid transparent;
+  transition: all ease 0.3s;
+}
+.navigation .owl-item.current .item{
+  border: 2px solid var(--white-color);
+}

@@ -1,0 +1,3064 @@
+﻿<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <base href=".">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="playhud" id="PlayerHud">
+        <div class="hud_outer">
+            <div class="hud_inner">
+                <div class="hud_left">
+                    <div class="progress">
+                        <div class="progress-bar color_hp" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar color_armor" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="hud_right">
+                    <div class="player_state">
+                        <div class="food_state">
+                            <svg class="hud_icon" viewBox="0 0 46.22 46.22">
+                                <g><path d="M23.11 0c12.76,0 23.11,10.35 23.11,23.11 0,12.76 -10.35,23.11 -23.11,23.11 -12.76,0 -23.11,-10.35 -23.11,-23.11 0,-12.76 10.35,-23.11 23.11,-23.11zm-2.8 43.34l-0.03 -4.71c0,0 -0.34,-1.82 1.87,-3.57 2.2,-1.76 3.68,-1.19 3.73,-7.82 0.05,-5.55 -0.17,-10.98 -0.51,-13.93 -0.34,-2.95 -0.79,-5.38 -0.96,-6.23 -0.17,-0.85 -0.4,-2.32 -1.19,-2.32 -0.79,0 -0.73,-0.1 -0.78,3.58 -0.05,3.67 0.22,13.24 0.16,13.69 -0.06,0.46 0.06,2.78 -1.42,2.89 -1.47,0.11 -1.53,-0.68 -1.53,-5.44 0,-4.75 -0.27,-13.02 -0.27,-13.02 -0.07,-3.1 -2.33,-3.1 -2.4,0 0,0 -0.27,8.27 -0.27,13.02 0,4.76 -0.06,5.55 -1.53,5.44 -1.47,-0.11 -1.36,-2.43 -1.42,-2.89 -0.05,-0.45 0.21,-10.02 0.16,-13.69 -0.03,-2.21 -0.02,-3.06 -0.18,-3.38 -0.51,0.27 -1.01,0.55 -1.5,0.86 -0.13,0.43 -0.22,0.9 -0.29,1.26 -0.17,0.85 -0.62,3.28 -0.96,6.23 -0.34,2.95 -0.56,8.38 -0.51,13.93 0.05,6.63 1.53,6.06 3.74,7.82 2.21,1.75 1.87,3.57 1.87,3.57l-0.05 3.64c1.36,0.5 2.79,0.86 4.27,1.07zm12.07 -2.03c-1.09,0.55 -2.23,1.01 -3.42,1.37 0.05,-4.94 0.15,-16.93 0.15,-18.95 0,-2.55 -0.62,-15.91 -0.62,-17.73 0,-1.81 0.57,-2.03 1.3,-1.98 0.74,0.06 4.36,4.87 5.38,8.21 1.02,3.35 1.25,7.08 1.47,10.82 0.23,3.74 -0.39,11.22 -0.39,11.22l-3.91 4.41 0.04 2.63z" /></g>
+                            </svg>
+                        </div>
+                        <div class="alcohol_state">
+                            <svg class="hud_icon" viewBox="0 0 116.9 116.9">
+                                <g>
+                                    <path d="M58.45 0c32.28,0 58.45,26.17 58.45,58.45 0,32.28 -26.17,58.45 -58.45,58.45 -32.28,0 -58.45,-26.17 -58.45,-58.45 0,-32.28 26.17,-58.45 58.45,-58.45zm-20.62 100.51l20.65 0 20.65 0c1.12,0 2.03,-0.92 2.03,-2.03l0 -57.31c0,-1.11 -0.78,-1.56 -1.79,-2.03l-13.19 -6.18 0 -3.52 0.73 0c0.91,0 1.66,-0.74 1.66,-1.65l0 -1.11c0,-0.91 -0.75,-1.65 -1.66,-1.65l-0.73 0 0 -2.34 0.6 0c1.18,0 2.15,-0.96 2.15,-2.15l0 -1.43c0,-0.88 -0.54,-1.64 -1.3,-1.97l0.94 0c0.72,0 1.31,-0.59 1.31,-1.32l0 -0.77c1.26,-0.46 2.33,-1.09 2.33,-1.79l0 0c0,-1.41 -4.4,-2.57 -5.82,-2.57l-7.91 0 -7.91 0c-1.42,0 -5.82,1.16 -5.82,2.57l0 0c0,0.7 1.07,1.33 2.33,1.79l0 0.77c0,0.73 0.59,1.32 1.31,1.32l0.94 0c-0.76,0.33 -1.3,1.09 -1.3,1.97l0 1.43c0,1.19 0.97,2.15 2.15,2.15l0.6 0 0 2.34 -0.73 0c-0.91,0 -1.66,0.74 -1.66,1.65l0 1.11c0,0.91 0.75,1.65 1.66,1.65l0.73 0 0 3.52 -13.19 6.18c-1.01,0.47 -1.79,0.92 -1.79,2.03l0 57.31c0,1.11 0.91,2.03 2.03,2.03zm7.64 -15.76l26.02 0c0.4,0 0.72,0.32 0.72,0.72l0 5.48c0,0.4 -0.32,0.72 -0.72,0.72l-26.02 0c-0.39,0 -0.72,-0.32 -0.72,-0.72l0 -5.48c0,-0.4 0.33,-0.72 0.72,-0.72zm-2.33 -39.28l30.68 0c0.3,0 0.54,0.24 0.54,0.54l0 4.29c0,0.3 -0.24,0.54 -0.54,0.54l-30.68 0c-0.3,0 -0.54,-0.24 -0.54,-0.54l0 -4.29c0,-0.3 0.24,-0.54 0.54,-0.54z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="smoke_state">
+                            <svg class="hud_icon" viewBox="0 0 74.29 74.29">
+                                <g>
+                                    <path d="M37.14 0c20.52,0 37.15,16.63 37.15,37.14 0,20.52 -16.63,37.15 -37.15,37.15 -20.51,0 -37.14,-16.63 -37.14,-37.15 0,-20.51 16.63,-37.14 37.14,-37.14zm-16.71 19.18c0,2.83 -0.04,3.76 1,6.35 1.64,4.04 5.53,7.04 10.59,7.04 1.18,0 1.64,-0.16 2.78,-0.16 -0.74,1.54 0.29,7.34 6.2,7.34 3.16,0 3.42,-0.07 6.55,-1.12 1.09,-0.37 6.11,-2.34 7.06,-0.24 0.41,0.92 0.06,3.28 -0.1,4.26 -0.3,1.68 -0.45,1.04 -0.45,2.81 0,1.71 3.13,3.14 5.13,0.24 1.55,-2.25 1.89,-5.56 1.89,-8.4 0,-3.24 -1.74,-5.83 -4.06,-7.7 -2.51,-2.03 -5.84,-2.58 -9.16,-2.58 0.13,-0.58 0.35,-0.88 0.52,-1.6 1.44,-5.94 -2.63,-10.93 -8.65,-10.78 0.01,-0.55 -0.18,-0.99 -0.35,-1.75 -0.52,-1.75 -2.96,-2.84 -4.49,-3.36 -0.35,-0.16 -0.77,-0.28 -1.25,-0.37l-0.01 0 0 0c-2.58,-0.43 -6.78,0.34 -9.63,2.65 -1.72,1.39 -3.57,4.32 -3.57,7.37zm-5.87 33.79c0,0.98 -0.11,4.9 1.3,4.9l37.22 0 0 -7.83 -37.22 0c-0.81,0 -1.3,1.99 -1.3,2.93zm42.44 4.9c3.76,0 4.57,0.87 4.57,-4.57 0,-4.08 -1.67,-3.26 -4.57,-3.26l0 7.83z" />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="drug_state">
+                            <svg class="hud_icon" viewBox="0 0 285.77 285.77">
+                                <g>
+                                    <path d="M142.88 0c78.92,0 142.89,63.97 142.89,142.88 0,78.92 -63.97,142.89 -142.89,142.89 -78.91,0 -142.88,-63.97 -142.88,-142.89 0,-78.91 63.97,-142.88 142.88,-142.88zm-4.29 163.77c-7.63,-6.05 -21.17,-18.13 -23.66,-29.33 -3.5,-15.76 -7.88,-28.31 1.75,-56.91 9.63,-28.6 20.43,-49.61 20.43,-49.61 0,0 2.92,-5.11 5.54,0.14 2.63,5.25 45.78,64.53 26.27,103.9 -11.46,23.11 -17.01,31.76 -19.64,34.96l0.71 26c0.03,0.01 3.49,1.72 11.05,-14.85 7.59,-16.64 17.51,-26.27 34.14,-34.73 16.64,-8.46 42.32,-17.22 50.49,-18.68 8.17,-1.46 19.26,-8.17 11.09,6.13 -8.17,14.3 -39.98,63.62 -60.41,70.33 -20.43,6.72 -27.43,7.01 -33.85,0.59 -6.42,-6.42 -6.93,-2.56 -12.33,-2.27l1.39 50.85c0.03,1.12 -0.93,1.94 -2.05,2.05l-7.44 0.72c-1.11,0.11 -2.07,-0.91 -2.04,-2.04l1.19 -42.16 -0.64 -10.89c-2.38,-0.52 -4.04,-0.74 -7.9,4.1 -5.65,7.11 -12.64,7.61 -33.7,3.24 -21.06,-4.36 -58.23,-49.78 -67.96,-63.06 -9.73,-13.29 2.04,-7.87 10.33,-7.34 8.28,0.52 34.78,6.33 52.27,12.86 17.48,6.53 28.43,14.98 37.84,30.65 3.86,6.42 6.68,9.84 8.66,11.65l-1.53 -26.3z" />
+                                </g>
+                            </svg>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="BodyEditWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Настройка тела</h2>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Пол персонажа</h3>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary btn-rdr2 active">
+                            <input type="radio" name="MaleFemaleOptions" id="PlayerMale" value="PlayerMale" autocomplete="off" checked>Мужской
+                        </label>
+                        <label class="btn btn-secondary btn-rdr2">
+                            <input type="radio" name="MaleFemaleOptions" id="PlayerFemale" value="PlayerFemale" autocomplete="off">Женский
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Персонаж</h3>
+            <hr>
+
+
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Голова</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="HeadDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0x378AD10C" data-max="HeadCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="HeadDelta_right" class="btn btn-arrow btn-arrow-right">right</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Тело</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="BodyDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0xB3966C9" data-max="TorsCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="BodyDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Телосложение</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="BodySizeDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="BodySizeIndex" data-max="BodySizeCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="BodySizeDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Талия</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="WaistTypeIndex_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="WaistTypeIndex" data-max="WaistTypeCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="WaistTypeIndex_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Рост</h5>
+                    </div>
+                    <div class="col-md-6 w20">
+                        <input style="float:right" type="range" class="form-control-range" val="1.0" min="0.9" max="1.1" step="0.01" id="pedscale">
+                        <h5 id="pedscaleVal">1</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Ноги</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="LegsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0x823687F5" data-max="LegsCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="LegsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Настройки головы</h3>
+            <hr>
+
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Волосы</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="HairDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0x864B03AE" data-max="HairCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="HairDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Глаза</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="EyeDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0xEA24B45E" data-max="EyeCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="EyeDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Усы</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="MustacheDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0xF8016BCA" data-max="MustacheCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="MustacheDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Зубы</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="TeethDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0x96EDAE5C" data-max="TeethCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="TeethDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="bottom_image">
+                    <div class="col-md-12 text-center">
+                        <img class="img" src="nui://new/frontend/images/scissors.png">
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="BodyEditReset">Сбросить</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="BodyEditSave">Сохранить</button>
+                </div>
+                <div class="col-md-4 w20">
+                    <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="BodyEditClose">Закрыть</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="BarberEditWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Цирюльник</h2>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text"></h3>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Волосы</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="HairDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0x864B03AE" data-max="HairCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="HairDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tt">
+                    <div class="col-md-6">
+                        <h5>Усы</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="MustacheDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="0xF8016BCA" data-max="MustacheCount" class="form-control rdr-input" value="0">
+                            <button type="button" id="MustacheDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="bottom_image">
+                    <div class="col-md-12 text-center">
+                        <img class="img" src="images/scissors.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="BarberEditReset">Сбросить</button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="BarberEditSave">Сохранить</button>
+                </div>
+                <div class="col-md-4 w20">
+                    <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="BarberEditClose">Закрыть</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="HeadEditWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Настройки головы</h2>
+                </div>
+            </div>
+
+            <div class="HorizontalScroll">
+
+                <h3 class="text-center main_text">Голова</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина головы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="headwidth"><h5 id="headwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Брови</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота бровей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyebrowheight"><h5 id="eyebrowheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина бровей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyebrowwidth"><h5 id="eyebrowwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина бровей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyebrowdepth"><h5 id="eyebrowdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Уши</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина ушей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="earswidth"><h5 id="earswidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Угол ушей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="earsangle"><h5 id="earsangleVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота ушей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="earsheight"><h5 id="earsheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Мочка уха</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="earlobesize"><h5 id="earlobesizeVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Скулы</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота скул</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="cheekbonesheight"><h5 id="cheekbonesheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина скул</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="cheekboneswidth"><h5 id="cheekboneswidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина скул</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="cheekbonesdepth"><h5 id="cheekbonesdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Челюсть</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота челюсти</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="jawheight"><h5 id="jawheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина челюсти</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="jawwidth"><h5 id="jawwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина челюсти</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="jawdepth"><h5 id="jawdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Подбородок</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота подбородка</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="chinheight"><h5 id="chinheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина подбородка</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="chinwidth"><h5 id="chinwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина подбородка</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="chindepth"><h5 id="chindepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Веки</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота век</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyelidheight"><h5 id="eyelidheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина век</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyelidwidth"><h5 id="eyelidwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Глаза</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина глаз</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyesdepth"><h5 id="eyesdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Угол глаз</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyesangle"><h5 id="eyesangleVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Расстояние между глаз</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyesdistance"><h5 id="eyesdistanceVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота глаз</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="eyesheight"><h5 id="eyesheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Нос</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина носа</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="nosewidth"><h5 id="nosewidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Размер носа</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="nosesize"><h5 id="nosesizeVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота носа</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="noseheight"><h5 id="noseheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Угол носа</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="noseangle"><h5 id="noseangleVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Кривизна носа</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="nosecurvature"><h5 id="nosecurvatureVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Расстояние ноздрей</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="nostrilsdistance"><h5 id="nostrilsdistanceVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Губы</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина губ</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="mouthwidth"><h5 id="mouthwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина губ</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="mouthdepth"><h5 id="mouthdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Горизонтальная позиция</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="mouthxpos"><h5 id="mouthxposVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Вертикальная позиция</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="mouthypos"><h5 id="mouthyposVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Верхняя губа</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота верхней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="upperlipheight"><h5 id="upperlipheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина верхней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="upperlipwidth"><h5 id="upperlipwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина верхней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="upperlipdepth"><h5 id="upperlipdepthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-center main_text">Нижняя губа</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Высота нижней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="lowerlipheight"><h5 id="lowerlipheightVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Ширина нижней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="lowerlipwidth"><h5 id="lowerlipwidthVal">0</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tt">
+                        <div class="col-md-6">
+                            <h5>Глубина нижней губы</h5>
+                        </div>
+                        <div class="col-md-6 w20">
+                            <input type="range" class="form-control-range" min="-2" max="2" step="0.1" id="lowerlipdepth"><h5 id="lowerlipdepthVal">0s</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="HeadEditReset">Сбросить</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="HeadEditSave">Сохранить</button>
+                    </div>
+                    <div class="col-md-4 w20">
+                        <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="HeadEditClose">Закрыть</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="СosmeticsEditWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Настройки лица</h2>
+                </div>
+            </div>
+
+            <div class="HorizontalScroll">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseF01" aria-expanded="false" aria-controls="collapseExample">
+                            Растительность
+                        </button>
+
+                        <div class="collapse" id="collapseF01">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Брови</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="eyebrows"><h5 id="eyebrowsVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="eyebrows_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="eyebrows_overlay" data-type="input" data-min="0" data-max="23" class="form-control rdr-input" value="0">
+                                                <button type="button" id="" data-type="btnright" data-target="eyebrows_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="eyebrows_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="eyebrows_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="0">
+                                                <button type="button" id="" data-type="btnright" data-target="eyebrows_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="eyebrows_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="eyebrows_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="eyebrows_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Щетина</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="beardstabble"><h5 id="beardstabbleVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="beardstabble_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="beardstabble_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="0">
+                                                <button type="button" id="" data-type="btnright" data-target="beardstabble_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="beardstabble_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="beardstabble_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="beardstabble_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Волосы</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="hair"><h5 id="hairVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="hair_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="hair_overlay" data-type="input" data-min="0" data-max="3" class="form-control rdr-input" value="0">
+                                                <button type="button" id="" data-type="btnright" data-target="hair_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="hair_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="hair_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="0">
+                                                <button type="button" id="" data-type="btnright" data-target="hair_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="hair_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="hair_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="1" id="hair_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseF02" aria-expanded="false" aria-controls="collapseExample">
+                            Недостатки лица
+                        </button>
+
+                        <div class="collapse" id="collapseF02">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Шрамы</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="scars"><h5 id="scarsVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="scars_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="scars_overlay" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="scars_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="scars_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="scars_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="scars_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="scars_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="scars_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="scars_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Прыщи</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="acne"><h5 id="acneVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="acne_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="acne_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="acne_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="acne_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="acne_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="acne_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Старение</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="ageing"><h5 id="ageingVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="ageing_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="ageing_overlay" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="ageing_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="ageing_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="ageing_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="ageing_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="ageing_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="ageing_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="ageing_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Веснушки</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="freckles"><h5 id="frecklesVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="freckles_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="freckles_overlay" data-type="input" data-min="0" data-max="14" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="freckles_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="freckles_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="freckles_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="freckles_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="freckles_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="freckles_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="freckles_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Грязь</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="grime"><h5 id="grimeVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="grime_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="grime_overlay" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="grime_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="grime_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="grime_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="grime_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="grime_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="grime_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="grime_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Родинки</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="moles"><h5 id="molesVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="moles_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="moles_overlay" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="moles_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="moles_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="moles_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="moles_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="moles_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="moles_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="moles_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Пятна</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="spots"><h5 id="spotsVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="spots_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="spots_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="spots_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="spots_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="spots_overlay" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="spots_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="spots_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="spots_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="spots_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Краснота кожи</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="complex"><h5 id="complexVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="complex_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="complex_overlay" data-type="input" data-min="0" data-max="13" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="complex_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="complex_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="complex_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="complex_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="complex_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="complex_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="complex_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseF03" aria-expanded="false" aria-controls="collapseExample">
+                            Косметика
+                        </button>
+
+                        <div class="collapse" id="collapseF03">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Подводка</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="eyeliners"><h5 id="eyelinersVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="eyeliners_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="eyeliners_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="eyeliners_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="eyeliners_var" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="eyeliners_var" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="eyeliners_var" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="eyeliners_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="eyeliners_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="eyeliners_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Губная помада</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="lipsticks"><h5 id="lipsticksVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="lipsticks_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="lipsticks_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="lipsticks_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="lipsticks_var" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="lipsticks_var" data-type="input" data-min="0" data-max="7" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="lipsticks_var" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="lipsticks_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="lipsticks_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="lipsticks_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Тени</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="shadows"><h5 id="shadowsVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="shadows_var" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="shadows_var" data-type="input" data-min="0" data-max="5" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="shadows_var" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="shadows_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="shadows_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="shadows_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="shadows_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="shadows_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="shadows_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Маска</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="paintedmasks"><h5 id="paintedmasksVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="paintedmasks_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="paintedmasks_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="paintedmasks_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="paintedmasks_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="paintedmasks_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="paintedmasks_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Румянец</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="blush"><h5 id="blushVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="blush_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="blush_overlay" data-type="input" data-min="0" data-max="3" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="blush_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="blush_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="blush_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="blush_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="blush_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="blush_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="blush_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Disc (тональник?)</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="disc"><h5 id="discVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Тип</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="disc_overlay" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="disc_overlay" data-type="input" data-min="0" data-max="15" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="disc_overlay" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="disc_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="disc_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="disc_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="disc_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="disc_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="disc_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Основа косметики</h5>
+                                        </div>
+                                        <div class="col-md-6 w20">
+                                            <input type="range" class="form-control-range" min="0" max="1" step="0.1" value="0" id="foundation"><h5 id="foundationVal">0</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Палитра</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox flexstart">
+                                                <button type="button" id="" data-type="btnleft" data-target="foundation_palette" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="foundation_palette" data-type="input" data-min="0" data-max="24" class="form-control rdr-input" value="1">
+                                                <button type="button" id="" data-type="btnright" data-target="foundation_palette" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="flexbox flexstart colors">
+                                                <h5>Цвет:</h5>
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="foundation_primary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="0" id="foundation_secondary">
+                                                <input type="range" class="form-control-range" min="0" max="254" step="1" value="127" id="foundation_tertiary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="CosmeticsReset">Сбросить</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="CosmeticsSave">Сохранить</button>
+                    </div>
+                    <div class="col-md-4 w20">
+                        <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="CosmeticsClose">Закрыть</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="MenuOuter menu_left" id="ClothEditWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Настройка одежды</h2>
+                </div>
+            </div>
+
+            <div class="HorizontalScroll">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC01" aria-expanded="false" aria-controls="collapseExample">
+                            Голова
+                        </button>
+
+                        <div class="collapse" id="collapseC01">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Шляпы</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="HatsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x9925C067" data-max="HatsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="HatsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Маски</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="MaskDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x7505EF42" data-max="MaskCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="MaskDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Очки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="EyewearDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x5E47CA6" data-max="EyewearCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="EyewearDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC02" aria-expanded="false" aria-controls="collapseExample">
+                            Тело и руки
+                        </button>
+
+                        <div class="collapse" id="collapseC02">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Рубашки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="ShirtsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x2026C46D" data-max="ShirtsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="ShirtsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Жилеты</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="VestsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x485EE834" data-max="VestsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="VestsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Плащи</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="CloaksDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x3C1A74CD" data-max="CloaksCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="CloaksDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Пончо</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="PonchosDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xAF14310B" data-max="PonchosCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="PonchosDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Пальто</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="CoatsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xE06D30CE" data-max="CoatsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="CoatsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Броня</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="ArmorDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x72E6EF74" data-max="ArmorCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="ArmorDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Наручи</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="GauntletsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x91CE9B20" data-max="GauntletsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="GauntletsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Перчатки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="GlovesDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xEABE0032" data-max="GlovesCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="GlovesDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Подтяжки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="SuspendersDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x877A2CF7" data-max="SuspendersCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="SuspendersDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC03" aria-expanded="false" aria-controls="collapseExample">
+                            Пояс
+                        </button>
+
+                        <div class="collapse" id="collapseC03">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Ремень</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="BeltDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xA6D134C6" data-max="BeltCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="BeltDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Пряжка</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="BeltBuckeleDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xFAE9107F" data-max="BeltBuckeleCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="BeltBuckeleDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Оружейный пояс</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="GunBeltDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x9B2C8B89" data-max="GunBeltCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="GunBeltDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC04" aria-expanded="false" aria-controls="collapseExample">
+                            Нижняя часть одежды
+                        </button>
+
+                        <div class="collapse" id="collapseC04">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Штаны</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="PantsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x1D4C528A" data-max="PantsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="PantsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Чапсы</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="ChapsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x3107499B" data-max="ChapsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="ChapsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Юбки (женские)</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="SkirtsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xA0E3AB7F" data-max="SkirtsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="SkirtsDelta_left" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Приспособления</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="LegAttachmentsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xF1542D11" data-max="LegAttachmentsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="LegAttachmentsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC05" aria-expanded="false" aria-controls="collapseExample">
+                            Обувь
+                        </button>
+
+                        <div class="collapse" id="collapseC05">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Гетры</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="SpatsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x514ADCEA" data-max="SpatsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="SpatsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Обувь</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="BootsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x777EC6EF" data-max="BootsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="BootsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Аксессуар ботинок</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="NeckwearDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x5FC29285" data-max="NeckwearCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="NeckwearDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Шпоры</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="SpursDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x18729F39" data-max="SpursCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="SpursDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC06" aria-expanded="false" aria-controls="collapseExample">
+                            Разное
+                        </button>
+
+                        <div class="collapse" id="collapseC06">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Значки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="BadgeDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x3F7F3587" data-max="BadgeCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="BadgeDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Галстуки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="NecktiesDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x7A96FACA" data-max="NecktiesCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="NecktiesDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Офхэнды</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="OffHandDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xB6B6122D" data-max="OffHandCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="OffHandDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-block btn-rdr2 colEl collapsed" type="button" data-toggle="collapse" data-target="#collapseC07" aria-expanded="false" aria-controls="collapseExample">
+                            Украшения
+                        </button>
+
+                        <div class="collapse" id="collapseC07">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Аксессуары</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="AccessoriesDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x79D7DF96" data-max="AccessoriesCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="AccessoriesDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Кольца левой руки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="RingsLeftHandDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0xF16A1D23" data-max="RingsReftHandCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="RingsLeftHandDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Кольца правой руки</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="RingsRightHandDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x7A6BBD0B" data-max="RingsRightHandCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="RingsRightHandDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="tt">
+                                        <div class="col-md-6">
+                                            <h5>Браслеты</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="flexbox">
+                                                <button type="button" id="BraceletsDelta_left" class="btn btn-arrow btn-arrow-left"></button>
+                                                <input type="number" id="0x7BC10759" data-max="BraceletsCount" class="form-control rdr-input" value="0">
+                                                <button type="button" id="BraceletsDelta_right" class="btn btn-arrow btn-arrow-right"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="ClothEditReset">Сбросить</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2" id="ClothEditSave">Сохранить</button>
+                    </div>
+                    <div class="col-md-4 w20">
+                        <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="ClothEditClose">Закрыть</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="HorseStableWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Конюшня</h2>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Ваши лошади:</h3>
+            <hr>
+            <div class="HorizontalScroll buymenuscroll">
+                <div class="row">
+                    <div class="col-md-12" id="HorseStableWindowList">
+                        <!-- There append content -->
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="HorseStableMount" data-horse="null">Выбрать</button>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4 w20">
+                    <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="HorseStableClose">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="VehicleStableWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Повозки</h2>f
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Ваши повозки:</h3>
+            <hr>
+            <div class="HorizontalScroll buymenuscroll">
+                <div class="row">
+                    <div class="col-md-12" id="VehicleStableWindowList">
+                        <!-- There append content -->
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="VehicleStableMount" data-vehicle="null">Выбрать</button>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4 w20">
+                    <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="VehicleStableClose">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="circle_menu" id="CircleAnimWindow">
+        <div class="outer_menu">
+            <div class="outer_circle" id="RoundMenuModal01">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-2121881035">Поклониться</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1457020913">Поклон шляпой</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1927505461">Воздушный<br>поцелуй</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1801715172">Выразить<br>уважение</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="901097731">Помахать<br>рукой</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-773960361">Играться<br>мускулами</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="589481092">Потирать<br>руки</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1939251934">Стрелять<br>в небо</button></div></li>
+                </ul>
+            </div>
+            <div class="outer_circle" id="RoundMenuModal02">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1118911493">Покашлять</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-822629770">Кивать</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="803206066">Смеяться</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="81347960">Плакать</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="796723886">Злиться</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1307697675">Радоваться</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1252070669">Хвастаться</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-2106738342">Сплюнуть</button></div></li>
+                </ul>
+            </div>
+            <div class="outer_circle" id="RoundMenuModal03">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="831975651">«Ах ты!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-462132925">«Та да!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-402959">«О да!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="329631369">«Кто, я?»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="445839715">«Вуу хуу!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="354512356">«Ах ты!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1533402397">«Давай!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-553424129">«Я слежу!»</button></div></li>
+                </ul>
+            </div>
+            <div class="outer_circle" id="RoundMenuModal04">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1879954891">«А ты<br>крут»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="164860528">«Прости<br>меня»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1802342943">«Как ты<br>мог»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1644757697">«Тише»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="246916594">«Заплачешь?»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="523585988">«Рад тебя<br>видеть»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-110352861">«В меня<br>попали»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-166523388">«Воняет»</button></div></li>
+                </ul>
+            </div>
+            <div class="outer_circle" id="RoundMenuModal05">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="425751659">Палец<br>вверх</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1509171361">Палец<br>вниз</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-339257980">Махать<br>рукой</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-221241824">Апплодировать</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1023735814">Медленно<br>хлопать</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="969312568">Показать<br>фак</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1256841324">Провести<br>пальцем по шее</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-653113914">Качать головой</button></div></li>
+                </ul>
+            </div>
+            <div class="outer_circle" id="RoundMenuModal06">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="935157006">Смотреть<br>в даль</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="7918540">Смотреть<br>карту</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="486225122">Указать<br>вперед</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="474409519">Указать<br>вниз</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="-1691237868">«Остановитесь»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1593752891">«Идем<br>туда»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="1115379199">«За<br>мной!»</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundbutton" id="987239450">Боевой<br>клич</button></div></li>
+                </ul>
+            </div>
+
+            <div class="inner_circle">
+                <ul class="circle">
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal01">Действия 1</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal02">Действия 2</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal03">Эмоции 1</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal04">Эмоции 2</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal05">Действия 3</button></div></li>
+                    <li><div class="round_element"><button class="round-btn btn btn-rdr2" data-toggle="roundmenu" data-target="#RoundMenuModal06">Указания</button></div></li>
+                </ul>
+            </div>
+            <div class="circle_over">
+                <button class="circle_close btn btn-rdr2 closewindow">Закрыть<br>окно</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_right" id="StorageWindow">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Ящик</h2>
+                </div>
+            </div>
+
+            <h3 class="text-center main_text">Предметы в ящике</h3>
+
+            <div class="MenuInner">
+                <ul class="nav nav-tabs" id="ItemsTab" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link" id="group1-tab" data-toggle="tab" href="#ItemGroup01" role="tab">Еда</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group2-tab" data-toggle="tab" href="#ItemGroup02" role="tab">Оружие</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group3-tab" data-toggle="tab" href="#ItemGroup03" role="tab">Предметы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group4-tab" data-toggle="tab" href="#ItemGroup04" role="tab">Документы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="group5-tab" data-toggle="tab" href="#ItemGroup05" role="tab">Ключи</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content" id="ItemsTabContent">
+                    <div class="tab-pane fade active in" id="ItemGroup01" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="inteface_item_outer" id="PlayerInterface99">
+                                    <!-- content -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ItemGroup02" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="inteface_item_outer" id="PlayerInterface992">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ItemGroup03" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="inteface_item_outer" id="PlayerInterface993">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ItemGroup04" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="inteface_item_outer" id="PlayerInterface994">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ItemGroup05" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="inteface_item_outer" id="PlayerInterface995">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <!--<h5><b>1.5/4.0 (кг)</b></h5>-->
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-rdr2" id="StorageWindowTake">В инвентарь</button>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4 w20">
+                    <button class="btn btn-danger btn-block btn-rdr2 closewindow" id="StorageWindowClose">Закрыть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="InterfaceWindow">
+        <div class="text-right"><button class="CloseInterface closewindow">X</button></div>
+        <div class="MenuInner">
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal01">Документы игрока</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal02">Анимации</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal03">Инвентарь</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal04">Одежда</button></div></div>
+            <div class="row" style="display:none"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal05">Навыки персонажа</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal06">Настройки персонажа</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#InterMenuModal07">Настройки игры</button></div></div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal01">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal01">X</button>
+        <div class="MenuInner selectable">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Документы игрока</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Имя:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b id="loadpassport_name">данные не загружены</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Фамилия:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b id="loadpassport_surname">данные не загружены</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Возраст:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b id="loadpassport_age">данные не загружены</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Рег. номер:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b id="loadpassport_id">данные не загружены</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Место жительства:</h5>
+                </div>
+                <div class="col-md-6 text-right">
+                    <h5><b>Неизвестно</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Лицензия на оружие:</h5>
+                </div>
+                <div class="col-md-6 text-right">
+                    <h5><b>Отсутствует</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-rdr2">Показать близжайшему игроку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal02">
+
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal02">X</button>
+
+        <div class="MenuInner" id="appendScenarios">
+            <h4>Ошибка! Данные не загружены</h4>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal03">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal03">X</button>
+
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Инвентарь</h4>
+                </div>
+                <!--<div class="col-md-6 text-right">
+                    <h5><b><span>1.5</span><span>/4.0</span> (кг)</b></h5>
+                </div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group" id="interface_group">
+                        <button type="button" data-filter="*" class="btn btn-rdr2 active">Все</button>
+                        <button type="button" data-filter=".filter_0" class="btn btn-rdr2">Еда</button>
+                        <button type="button" data-filter=".filter_8, .filter_9" class="btn btn-rdr2">Оружие</button>
+                        <button type="button" data-filter=".filter_6, .filter_7" class="btn btn-rdr2">Остальное</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="inteface_item_outer grid" id="PlayerInterface">
+                        <h4>Ошибка! Данные не загружены</h4>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="item_hover_window" id="ItemHoverWindow">
+        <div class="hover_window_outer">
+            <div class="hover_window_inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 id="hover_window_name">нет данных</h4>
+                        <p>Становится персональным при получении</p>
+                        <p class="hover_window_description" id="hover_window_description">нет данных</p>
+                        <br>
+                        <p>Количество: <span id="hover_window_count">1</span></p>
+                        <p id="hover_window_price_text">Цена: <span id="hover_window_price"></span>$</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hover_window_image_outer" id="hover_window_image_outer">
+            <img src="" class="img-responsive" id="hover_window_image">
+        </div>
+    </div>
+
+    <div class="togglewindow" id="Togglewindow">
+        <div class="toggle_window_outer">
+            <div class="toggle_window_inner">
+                <ul class="toggle_li">
+                    <!-- Here append content -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="togglewindow" id="ToggleTransferWindow">
+        <div class="toggle_window_outer">
+            <div class="toggle_window_inner">
+                <div class="dropableTop ui-draggable-handle"></div>
+                <button class="CloseInterface">X</button>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Количество:</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flexbox">
+                            <button type="button" id="TransferCountLeft" class="btn btn-arrow btn-arrow-left"></button>
+                            <input type="number" id="TransferCount" data-maxcount="1" class="form-control rdr-input" value="1">
+                            <button type="button" id="TransferCountRight" class="btn btn-arrow btn-arrow-right"></button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="toggle_li">
+                    <!-- Here append content -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="MenuOuter Modal" id="InterMenuModal04">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal04">X</button>
+
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Одежда</h4>
+                </div>
+            </div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="ClothMenu3" data-width="500">Надеть/снять элемент одежды</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="ClothMenu1" data-width="400">Все комплекты</button></div></div>
+            <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="ClothMenu2">Сохранить комплект</button></div></div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="ClothMenu1">
+        <div class="MenuInner">
+            <h4>Надеть комплект</h4>
+            <div class="form-group cloth_list mb0" id="cloth_list">
+                <h4>Ошибка! Данные не загружены!</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="ClothMenu2">
+        <div class="MenuInner">
+            <h4>Сохранить текущий набор одежды как комплект</h4>
+            <div class="form-group flexbox space-between mb0 mt20">
+                <input type="text" id="cloth_save_id" placeholder="Введите название комплекта">
+                <button class="btn btn-rdr2" data-type="cloth_menu" data-command="cloth_save" id="">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="ClothMenu3">
+        <div class="MenuInner">
+            <h4>Надеть/снять элемент одежды (в разработке)</h4>
+            <div class="form-group">
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff1">Головной убор</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff2">Маска</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff3">Верхняя одежда</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff4">Футболка/рубашка</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff5">Штаны/шорты</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff6">Ботинки</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff7">Аксессуары</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="cloth_onoff" data-command="ClothTakeoff8">Маска</button></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal05">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal05">X</button>
+
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Навыки персонажа</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Сила:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b>4 из 10</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Выносливость:</h5>
+                </div>
+                <div class="col-md-8 text-right">
+                    <h5><b>7 из 10</b></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal06">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal06">X</button>
+
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Настройка персонажа</h4>
+                    <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="WalkStyleMenu" data-width="500">Сменить походку</button></div></div>
+                    <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="givemoney" data-width="500">Выдать деньги</button></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="WalkStyleMenu">
+        <div class="MenuInner">
+            <h4>Выберите походку</h4>
+            <div class="form-group">
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Default">Стандартная</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Casual">Повседневная</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Crazy">Сумасшедшая</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Flamboyant">Яркая</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Gunslinger">Походка стрелка</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Refined">Изысканная</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_SilentType">Тихая</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Greenhorn">Неопытная</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_Veteran">Ветеранская</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="change_walkstyle" data-walk="MP_Style_EasyRider">Походка наездника</button></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="InterMenuModal07">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#InterMenuModal07">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Настройка игры</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="textEditor">
+        <div class="MenuInner">
+            <h4>Редактирование документа</h4>
+            <div class="form-group">
+                <label for="editDocumentsHeading">Введите заголовок</label>
+                <input class="form-control" id="editDocumentsHeading" type="text"></input>
+            </div>
+            <div class="form-group">
+                <label for="editDocumentsTextarea">Введите текст</label>
+                <textarea class="form-control" id="editDocumentsTextarea" rows="8"></textarea>
+            </div>
+            <div class="flexbox space-between">
+                <button class="btn btn-rdr2" onclick="$('#textEditor').dialog('close')">Отмена</button>
+                <button class="btn btn-rdr2" id="preview_document">Предпросмотр</button>
+                <button class="btn btn-rdr2 btn-danger">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="textDocument">
+        <div class="MenuInner">
+            <h4>Заголовок</h4>
+            <div class="content_textdocument">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="outerbook bookdesign" id="ShopBook">
+        <div class="innerBook">
+            <div id="flipbook" class="shop_book">
+                <!-- Append Content Here -->
+            </div>
+        </div>
+        <button class="btn-rdr2 btn closebook">X</button>
+    </div>
+
+
+
+    <div class="search_block">
+        <div class="container">
+            <div class="search_outer">
+                <div class="search_inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>РАЗЫСКИВАЕТСЯ</h1>
+                            <h2>ЖИВЫМ ИЛИ МЕРТВЫМ</h2>
+                            <div class="text-center"><img src="images/ui/starline.png"></div>
+                            <div class="text-center"><img class="img_wanted" src="images/ui/wanted.png"></div>
+                            <hr>
+                            <h3>Вооружен и очень опасен!</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <span class="reward_text ">НАГРАДА:</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="reward_dollars">$2,000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="regwindow" id="RegistrationWindow">
+        <div class="regwindow_outer">
+            <div class="textbox">
+                <div class="row">
+                    <div class="col-md-5">
+                        <span><b>Описание</b></span>
+                        <div class="flexbox">
+                            <span>Возраст</span><input type="text" placeholder="?" id="passport_age"><span>лет</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Вес</span><input type="text" placeholder="?" id="passport_weight"><span>килограмм</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Лоб</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Цвет глаз</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Нос</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Губы</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Телосложение</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Цвет волос</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Комплекция</span><span class="answer">cтандарт</span>
+                        </div>
+                        <div class="flexbox">
+                            <span>Лицо</span><span class="answer">овальное</span>
+                        </div>
+                        <div class="flexbox">
+                            <span><b>Подпись предьявителя</b></span>
+                        </div>
+                        <div class="flexbox">
+                            <input type="text" placeholder="Введите инициалы" id="passport_signature" class="megawide">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="text-center">№ 5062</h3>
+                        <p>Государственный секретарь <b>Соединенных Штатов Америки</b> настоящим просит всех, кого это может касаться, разрешить гражданину Соединенных Штатов</p>
+                        <input type="text" placeholder="Имя" id="passport_name" class="wide45"> <input type="text" id="passport_surname" placeholder="Фамилия" class="wide45">
+                        <p>пройти без промедления или препятствий и в случае необходимости оказать всю законную помощь и защиту.</p>
+                        <div class="left_margin">
+                            <p>Даны под мою руку и оттиск печати <b>Государственного департамента</b>, в городе <b>Saint Denis</b> в год провозглашения независимости Соединенных Штатов Америки.</p>
+                        </div>
+                        <img class="signature" src="images/ui/passport/signature.png">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <button class="btn btn-block btn-danger btn-rdr2" id="passport_save">Сохранить паспорт</button>
+                    </div>
+
+                </div>
+            </div>
+            <button class="btn-rdr2 btn closewindow">X</button>
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_center" id="" style="display:none">
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center header_text">Регистрация документов</h2>
+                </div>
+            </div>
+            <h3 class="text-center main_text">Заполните данные</h3>
+            <!-- <div class="form">
+                <div class="form-group">
+                    <label for="RegName">Имя</label>
+                    <input type="text" class="form-control rdr-input" id="RegName" placeholder="Введите имя">
+                </div>
+                <div class="form-group">
+                    <label for="RegSurname">Фамилия</label>
+                    <input type="text" class="form-control rdr-input" id="RegSurname" placeholder="Введите фамилию">
+                </div>
+                <div class="form-group">
+                    <label for="RegSurname">Дата рождения</label>
+                    <input type="date" class="form-control rdr-input" id="RegSurname" placeholder="Введите дату рождения">
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-block btn-rdr2">Сохранить</button>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-danger btn-block btn-rdr2">Закрыть</button>
+                    </div>
+                </div>
+
+            </div> -->
+
+        </div>
+    </div>
+
+    <div class="MenuOuter menu_left" id="adminMenu">
+        <div class="MenuInner">
+            <div class="text-right">
+                <button class="CloseInterface closewindow" data-target="#adminMenu">X</button>
+            </div>
+            <div class="MenuInner">
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#AdminMenuModal01">Мой персонаж</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#AdminMenuModal02">Игроки</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#AdminMenuModal03">Телепортация</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#AdminMenuModal04">Пропы</button></div></div>
+                <div class="row"><div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-toggle="submenu" data-target="#AdminMenuModal05">Администрирование</button></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuModal01">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#AdminMenuModal01">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Мой персонаж</h4>
+                </div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="noclip">Ноуклип</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="invisible">Невидимость</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="rise">Воскреснуть</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="restore">Восстановить хп, энергию</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="AdminMenuGiveItem">Выдать себе предмет</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="spawnhorse">Заспавнить свою лошадь</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="rescue">Воскреснуть!</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuModal02">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#AdminMenuModal02">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Сортировка. Количество игроков:</h4><h4 id="#onlineCount"></h4>
+                </div>
+                <div class="col-md-12">
+                    <div class="button-group" id="sortByPlayerlist">
+                        <button class="btn filter" data-sortby="name">Все</button>
+                        <button class="btn filter" data-sortby="id">по ID</button>
+                        <button class="btn filter" data-filtervalue=".admin">Админы</button>
+                        <button class="btn filter" data-filtervalue=".streamer">Стримеры</button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="grid" id="adminMenuPlayersList">
+                        <!-- Append content here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="PlayerInfoModal">
+        <div class="MenuInner">
+            <div class="content">
+                <!-- Append content here -->
+            </div>
+            <div class="flexbox flexstart flex-wrap">
+                <button class="btn btn-rdr2" data-dialog="AdminMenuGiveItemToPlayer" id="giveitemtoplayer">Выдать предмет</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="tpplayertome">тп к себе</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="tptoplayer">тп к нему</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="kickplayer">Кикнуть</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="banplayer">Забанить</button>
+                <!-- <button class="btn btn-rdr2" data-type="admin" data-command="clearlookplayer">Очистить персонажа</button> -->
+                <button class="btn btn-rdr2" data-dialog="AdminMenuClearLookAccept" id="clearlookaccept">Очистить персонажа</button>
+                <button class="btn btn-rdr2" data-dialog="AdminMenuClearPropertyPlayer" id="clearpropertyplayer">Очистить инвентарь</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="rescueplayer">Воскресить</button>
+                <button class="btn btn-rdr2" data-dialog="AdminMenuGiveRole" id="giveroletoplayer">Выдать роль</button>
+                <button class="btn btn-rdr2" data-dialog="AdminMenuRemoveRole" id="removeroletoplayer">Удалить роль</button>
+                <button class="btn btn-rdr2" data-type="admin" data-command="call">Test!!! Call to player</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuClearLookAccept">
+        <div class="MenuInner">
+            <div class="form-group flexbox space-between whitelist">
+                <h4>Вы уверены?</h4>
+                <button class="btn btn-rdr2" data-type="admin" data-command="clearlookplayer" id="clearlookaccept_ok">Очистить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuClearPropertyPlayer">
+        <div class="MenuInner">
+            <div class="form-group flexbox space-between whitelist">
+                <h4>Вы уверены?</h4>
+                <button class="btn btn-rdr2" data-type="admin" data-command="clearpropertyplayer" id="clearpropertyplayer_ok">Очистить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuModal03">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#AdminMenuModal03">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="adminForm" action="#">
+                        <h4>Выберите игрока</h4>
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="location">Игрок</label>
+                                <select name="number" id="tp_target">
+                                    <option selected="selected" value="false">не выбрано</option>
+                                    <option value="0">Admin</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <h4>Выберите место</h4>
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="location">К локации</label>
+                                <select name="number" id="tp_location">
+                                    <option selected="selected" value="false">не выбрано</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">К игроку</label>
+                                <select name="number" id="tp_toplayer">
+                                    <option selected="selected" value="false">не выбрано</option>
+                                    <option value="0">Admin</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tp_coord">К координате</label>
+                                <input class="ui-selectmenu-button ui-button ui-corner-all" type="text" id="tp_coord" value="" placeholder="X Y Z">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h5><b>Перемещение:</b> <span id="tp_span1">не выбрано</span><b> к </b><span id="tp_span2">не выбрано</span></h5>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-right">
+                        <button class="btn btn-rdr2 nomargin" id="tp_startTp" data-type="admin" data-command="tpform" data-targeta="false" data-targetb="false">Переместить</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuModal04">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#AdminMenuModal04">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12"><h4>Пропы</h4></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="AdminMenuPropSpawn">Заспавнить проп по Id</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="AdminMenuPropDelete">Удалить про по Id</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="turnprops">Включить отображение пропов</button></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuModal05">
+        <div class="dropableTop"></div>
+        <button class="CloseInterface" data-target="#AdminMenuModal05">X</button>
+        <div class="MenuInner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Администрирование</h4>
+                </div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="AdminMenuWhiteListAdd">Прописать в white-list</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-dialog="AdminMenuWhiteListRemove">Исключить из white-list</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="UpdatePrices">Обновить цены в магазинах</button></div>
+                <div class="col-md-12"><button class="btn btn-interface btn-rdr2 btn-block" data-type="admin" data-command="PlayerNames">Показать имена игроков</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuPropSpawn">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="adminpropadd" placeholder="id пропа">
+                <button data-type="admin" data-command="spawnpropbyid" class="btn btn-rdr2">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuPropDelete">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="adminpropdelete" placeholder="id пропа">
+                <button data-type="admin" data-command="removepropbyid" class="btn btn-rdr2">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuWhiteListAdd">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="adminwladd" placeholder="id игрока">
+                <button data-type="admin" data-command="addplayertowl" class="btn btn-rdr2">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuWhiteListRemove">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="adminwlremove" placeholder="id игрока">
+                <button data-type="admin" data-command="removeplayerfromwl" class="btn btn-rdr2">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuGiveItem">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="giveitem_id" placeholder="id предмета">
+                <input type="number" id="giveitem_count" placeholder="кол-во">
+                <button class="btn btn-rdr2" data-type="admin" data-command="giveitem">Ок</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="MenuOuter Modal" id="AdminMenuGiveRole">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="give_role" placeholder="роль">
+                <button class="btn btn-rdr2" data-type="admin" data-command="giverole" id="giveroleplayer_ok">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuRemoveRole">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="remove_role" placeholder="роль">
+                <button class="btn btn-rdr2" data-type="admin" data-command="removerole" id="removeroleplayer_ok">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="MenuOuter Modal" id="AdminMenuGiveItemToPlayer">
+        <div class="MenuInner">
+            <div class="form-group flexbox whitelist">
+                <input type="text" id="giveitemtoplayer_id" placeholder="id предмета">
+                <input type="number" id="giveitemtoplayer_count" placeholder="кол-во">
+                <button class="btn btn-rdr2" data-type="admin" data-command="giveitemtoplayer" id="giveittoplayer_ok">Ок</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cam_help_text MenuOuter" id="camHelpText">
+        <p>CTRL + W/A/S/D - Двигать камеру</p>
+        <p>CTRL + Пробел - Камера вверх</p>
+        <p>CTRL + Shift - Камера вниз</p>
+        <p>CTRL + Стрелки - Повернуть камеру</p>
+        <p>CTRL + Q/E - Изменить поле зрения</p>
+    </div>
+
+    <div class="server_logo"><img src="images/logo_color.png"></div>
+    <div class="popup"></div>
+    <div class="progress_block"></div>
+
+
+
+
+    <textarea class="debugger" id="DebugArea"></textarea>
+    <button class="btn test-button b1">admin</button>
+    <button class="btn test-button b2" style="top:40px;">item</button>
+
+    <div id="RtcRemoteAudios">
+
+
+    </div>
+
+
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="js/turn.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/library.js"></script>
+<script type="text/javascript" src="js/adapter.js"></script>
+<script type="text/javascript" src="js/webRtc.js"></script>
+
+</html>
